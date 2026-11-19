@@ -19,7 +19,7 @@ Tap the splash screen first, because browsers only play sound after a tap. On th
 
 ## Made for young children
 
-- **No reading needed:** Ollie the owl speaks every instruction, and the 🔊 button repeats it. An animated hand shows the gesture the first time each mini-game comes up.
+- **No reading needed:** Fenny the fennec fox (the game's guide) speaks every instruction, and the 🔊 button repeats it. An animated hand shows the gesture the first time each mini-game comes up.
 - **No failure screens:** a wrong move bounces back gently, and every round ends with at least 1 star.
 - **Easy dragging:** large letter tiles and forgiving drop zones. A tap works too, for children who cannot drag yet.
 - **Hints:** a 💡 bulb appears after 15 seconds without progress.

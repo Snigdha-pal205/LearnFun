@@ -308,11 +308,16 @@ const LETTER_SOUND = { A: 'ah', B: 'buh', C: 'kuh', D: 'duh', E: 'eh', F: 'fuh',
 
 const PRAISE = ['Great job!', 'Super!', 'You did it!', 'Well done!', 'Wonderful!', 'Fantastic!', 'Hooray!', 'Brilliant!', 'Yay! Good work!'];
 
-/* ------------------------------------------------------------------ Ollie the owl (mascot) */
-const OLLIE_HTML = '<div class="bubble"></div><div class="ollie-body"><span class="owl">🦉</span><span class="bag">🎒</span><span class="point">👉</span></div>';
+/* ------------------------------------------------------------------ Fenny the fennec fox (mascot, original drawing)
+ * The object is still called Ollie in code (it was an owl before); everything the child sees is Fenny. */
+const FENNY_SVG = '<svg class="fox" viewBox="0 -2 100 106" aria-hidden="true"><path d="M64 92 Q90 96 92 74 Q94 62 86 60 Q84 78 66 84Z" fill="#E9A866"/><path d="M86 60 Q94 62 92 74 Q88 70 84 66Z" fill="#FFF6E8"/><rect x="30" y="74" width="40" height="22" rx="8" fill="#C8763A"/><ellipse cx="50" cy="88" rx="16" ry="13" fill="#F2C38B"/><ellipse cx="50" cy="91" rx="9" ry="9" fill="#FFF3E2"/><path d="M38 78 Q40 90 42 100" stroke="#8A4B1F" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M62 78 Q60 90 58 100" stroke="#8A4B1F" stroke-width="3.5" fill="none" stroke-linecap="round"/><ellipse cx="42" cy="101" rx="6" ry="3.5" fill="#E9A866"/><ellipse cx="58" cy="101" rx="6" ry="3.5" fill="#E9A866"/><path d="M33 42 L6 4 Q4 2 7 3 L46 30Z" fill="#F2C38B"/><path d="M33 38 L13 10 L42 30Z" fill="#FFB5A7"/><path d="M67 42 L94 4 Q96 2 93 3 L54 30Z" fill="#F2C38B"/><path d="M67 38 L87 10 L58 30Z" fill="#FFB5A7"/><path d="M22 52 Q22 30 50 30 Q78 30 78 52 Q78 66 66 72 L50 78 L34 72 Q22 66 22 52Z" fill="#F2C38B"/><path d="M22 54 L16 60 L26 62 Z M78 54 L84 60 L74 62Z" fill="#F2C38B"/><path d="M32 62 Q50 82 68 62 Q64 76 50 78 Q36 76 32 62Z" fill="#FFF3E2"/><ellipse cx="50" cy="66" rx="12" ry="8" fill="#FFF3E2"/><ellipse cx="39" cy="52" rx="5.5" ry="6.5" fill="#2B1B12"/><ellipse cx="61" cy="52" rx="5.5" ry="6.5" fill="#2B1B12"/><circle cx="41" cy="49.5" r="2.2" fill="#fff"/><circle cx="63" cy="49.5" r="2.2" fill="#fff"/><circle cx="37.5" cy="55" r="1" fill="#fff"/><circle cx="59.5" cy="55" r="1" fill="#fff"/><ellipse cx="31" cy="60" rx="4.5" ry="3" fill="#FF9AA2" opacity=".7"/><ellipse cx="69" cy="60" rx="4.5" ry="3" fill="#FF9AA2" opacity=".7"/><ellipse cx="50" cy="61.5" rx="4" ry="3" fill="#2B1B12"/><path d="M44 66 Q50 72 56 66" stroke="#2B1B12" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M47 68.5 Q50 72 53 68.5Z" fill="#FF6F7D"/><ellipse cx="50" cy="34" rx="24" ry="5.5" fill="#3E8E4A"/><path d="M33 34 Q34 16 50 15 Q66 16 67 34Z" fill="#59B85F"/><path d="M34 30 Q50 33 66 30 L66.6 34 Q50 37 33.4 34Z" fill="#2E6B38"/><path d="M41 21 Q46 17 52 17" stroke="#8FD98F" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="60" cy="31.5" r="2.4" fill="#FFD93D"/></svg>';
+const OLLIE_HTML = '<div class="bubble"></div><div class="ollie-body">' + FENNY_SVG + '<span class="point">👉</span></div>';
 const Ollie = {
   seq: 0,
-  init() { $$('.ollie').forEach(o => { o.innerHTML = OLLIE_HTML; o.dataset.pose = o.dataset.pose || 'idle'; }); },
+  init() {
+    $$('.ollie').forEach(o => { o.innerHTML = OLLIE_HTML; o.dataset.pose = o.dataset.pose || 'idle'; });
+    $$('.load-owl').forEach(o => { o.innerHTML = FENNY_SVG; });
+  },
   pose(p) { $$('.ollie').forEach(o => { o.dataset.pose = p; }); },
   async say(text, o = {}) {
     const id = ++this.seq;

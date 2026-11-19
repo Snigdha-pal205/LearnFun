@@ -372,7 +372,7 @@ const UI = {
   goHome(greet) {
     this.show('scr-home');
     this.renderHome();
-    if (greet) Ollie.say("Hi! I'm Ollie. Tap the big button to play!", { pose: 'wave' });
+    if (greet) Ollie.say("Hi! I'm Fenny the fox. Tap the big button to play!", { pose: 'wave' });
     else Ollie.say('Tap play!', { pose: 'wave' });
   },
 
@@ -700,7 +700,7 @@ async function boot() {
   applyBodySettings();
   bindUI();
 
-  // Preload every picture before the first round, with Ollie on the loading bar
+  // Preload every picture before the first round, with Fenny on the loading bar
   const imgs = new Set(['assets/img/bg-spell.jpg', 'assets/img/bg-map.jpg', 'assets/img/map-africa.jpg']);
   CONTENT.spell.forEach(i => i.image && imgs.add(i.image));
   CONTENT.baby.forEach(b => { if (b.parentImg) imgs.add(b.parentImg); if (b.babyImg) imgs.add(b.babyImg); });
