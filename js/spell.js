@@ -226,19 +226,18 @@ class SpellRound {
   async checkWin() {
     if (this.done || !this.boxes.every(b => b.locked)) return;
     this.done = true;
-    await sleep(350);
-    for (const b of this.boxes) {
+    await sleep(200);
+    if (!this.ctx.alive()) return;
+    this.boxes.forEach((b, i) => setTimeout(() => {
       if (!this.ctx.alive()) return;
       b.tile.el.classList.add('bounce');
-      await Voice.speak(LETTER_NAME[b.ch] || b.ch, { rate: 1 });
-      b.tile.el.classList.remove('bounce');
-    }
+      setTimeout(() => b.tile.el.classList.remove('bounce'), 380);
+    }, i * 400));
+    setTimeout(() => this.ctx.alive() && this.pic.classList.add('celebrate'), this.boxes.length * 400);
+    const letters = this.boxes.map(b => LETTER_NAME[b.ch] || b.ch).join(', ');
+    await Voice.speak(`${letters}. ${this.word.toLowerCase()}!`, { rate: 0.95 });
     if (!this.ctx.alive()) return;
-    this.pic.classList.add('celebrate');
-    await Voice.speak(this.word.toLowerCase() + '!', { rate: 0.85 });
-    if (this.item.sound && this.ctx.alive()) await Voice.speak(this.item.sound, { pitch: 1.3 });
-    if (!this.ctx.alive()) return;
-    this.ctx.api.win({ title: this.disp(this.word), word: this.word, line: null });
+    this.ctx.api.win({ title: this.disp(this.word), word: this.word, line: this.item.sound || null });
   }
 
   hint() {

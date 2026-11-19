@@ -161,7 +161,8 @@ const Game = {
     $('.intro-icon', intro).textContent = def.icon;
     $('.intro-text', intro).textContent = def.introLine;
     intro.classList.add('show');
-    await Promise.all([sleep(1500), Ollie.say(def.introLine, { bubble: false })]);
+    Sound.sfx('pop');
+    await sleep(Store.settings.reducedMotion ? 400 : 800);
     if (this.round !== r || r.dead) return;
     intro.classList.remove('show');
     this.launch(r, true);
@@ -272,9 +273,7 @@ const Game = {
       if (this.session === s) { this.updateDots(); Sound.sfx('star'); }
     });
 
-    if (info.line) await Ollie.say(info.line, { pose: 'cheer' });
-    if (this.round !== r || r.advanced) return;
-    await Ollie.say(pick(PRAISE), { pose: 'cheer' });
+    await Ollie.say(info.line || pick(PRAISE), { pose: 'cheer' });
     if (this.round !== r || r.advanced) return;
     this.armAuto();
   },
@@ -282,7 +281,7 @@ const Game = {
     const r = this.round;
     if (!r || !r.won || r.advanced || Store.settings.smartboard) return;
     clearTimeout(r.autoT);
-    r.autoT = setTimeout(() => { if (!$('#leave').classList.contains('show')) this.advance(); }, 2000);
+    r.autoT = setTimeout(() => { if (!$('#leave').classList.contains('show')) this.advance(); }, 600);
   },
 
   advance() {
@@ -702,7 +701,7 @@ async function boot() {
   bindUI();
 
   // Preload every picture before the first round, with Ollie on the loading bar
-  const imgs = new Set(['assets/img/bg-spell.jpg']);
+  const imgs = new Set(['assets/img/bg-spell.jpg', 'assets/img/bg-map.jpg', 'assets/img/map-africa.jpg']);
   CONTENT.spell.forEach(i => i.image && imgs.add(i.image));
   CONTENT.baby.forEach(b => { if (b.parentImg) imgs.add(b.parentImg); if (b.babyImg) imgs.add(b.babyImg); });
   const total = imgs.size || 1;

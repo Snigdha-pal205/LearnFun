@@ -6,8 +6,8 @@ Each session has 9 short rounds from three mini-games, served in a shuffled orde
 
 | Mini-game | What the child does | What they learn |
 |---|---|---|
-| 🔤 **Spell It** | Sees a picture (box, bed, bat, hat, bag) and drags the shuffled letters into the boxes to make the word | Letters, 3-letter words, linking a word to a picture and its sound |
-| 🌍 **Map Puzzle** | Drags a country piece (with its flag and name) into its place on a map of North Africa | Country shapes and neighbours from Algeria to Sudan |
+| 🔤 **Spell It** | Sees a picture (box, bed, bat, hat, bag, pig, mug) and drags the shuffled letters into the boxes to make the word | Letters, 3-letter words, linking a word to a picture and its sound |
+| 🌍 **Map Puzzle** | Drags a country piece, cut from an illustrated 3D map, into its empty slot. A card shows its flag, name and famous monument | Country shapes and neighbours from Algeria to Sudan |
 | 🐾 **Find the Baby** | Draws a line from a grown-up animal to its baby | Animals and their young (dog → puppy, cow → calf) |
 
 ## How to play
@@ -72,5 +72,5 @@ Spell It uses 3-letter words that have a picture.
 
 - Voice uses the browser's built-in text-to-speech and prefers an Indian English voice where the device has one. Recorded voice clips would sound more natural.
 - Sound effects and background music are generated in the browser, so there are no audio files.
-- The country shapes are simplified by hand. Neighbouring countries share the exact same border points, so each piece fits its hole with no gaps.
+- The Map Puzzle uses one illustrated picture (`assets/img/map-africa.jpg`). Each country's outline is traced on it in `js/map.js`, and the piece is cut from the same picture with the same outline, so it fits its slot exactly. If you replace the picture, re-trace the outlines.
 - The game design is described in `Little_Explorers_GDD.pdf`.

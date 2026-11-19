@@ -169,10 +169,8 @@ class BabyRound {
       card.el.classList.add('hop');
       this.cards.filter(c => c !== card).forEach(c => c.el.classList.add('dim'));
       const p = this.pair;
-      const line = `Yes! A baby ${p.parent} is called ${article(p.baby)}.`;
-      await sleep(700);
-      if (!this.ctx.alive()) return;
-      if (p.sound) await Voice.speak(p.sound, { pitch: 1.3 });
+      const line = `${p.sound ? p.sound + ' ' : ''}A baby ${p.parent} is called ${article(p.baby)}.`;
+      await sleep(400);
       if (!this.ctx.alive()) return;
       const lower = this.ctx.settings.letterCase === 'lower';
       this.ctx.api.win({ title: lower ? p.baby : p.baby.toUpperCase(), line });

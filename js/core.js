@@ -290,7 +290,7 @@ const Voice = {
         if (done) return; done = true;
         clearTimeout(t); this.pending.delete(fin); resolve();
       };
-      const t = setTimeout(fin, 1500 + text.length * 120);   // some browsers never fire onend
+      const t = setTimeout(fin, 800 + text.length * 75);   // some browsers never fire onend
       u.onend = fin; u.onerror = fin;
       this.pending.add(fin);
       speechSynthesis.speak(u);

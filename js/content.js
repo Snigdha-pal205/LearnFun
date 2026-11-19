@@ -5,7 +5,8 @@
  *  spell: word, level (easy | normal | hard), image (path, optional), emoji (placeholder picture
  *         used when there is no image yet), sound (spoken on win, optional), say (optional intro
  *         phrase, e.g. "some milk" — default is "a/an <word>").
- *  map:   id (must match a shape in js/map.js), country, level, fact (spoken on win).
+ *  map:   id (must match a country outline in js/map.js), country, level, fact (spoken on win),
+ *         monument (shown on the name card), monumentSay (spoken in the instruction).
  *  baby:  parent, baby, parentImg / babyImg (optional), parentEmoji / babyEmoji (placeholders),
  *         group, level, similar (parents whose babies look alike — used as decoys at normal level),
  *         sound (spoken on win).
@@ -20,7 +21,7 @@ window.LE_CONTENT = {
     { "word": "ANT", "level": "easy", "emoji": "🐜" },
     { "word": "COW", "level": "easy", "emoji": "🐄", "sound": "Moo!" },
     { "word": "DOG", "level": "easy", "emoji": "🐶", "sound": "Woof woof!" },
-    { "word": "PIG", "level": "easy", "emoji": "🐷", "sound": "Oink oink!" },
+    { "word": "PIG", "level": "easy", "image": "assets/img/pig.jpg", "emoji": "🐷", "sound": "Oink oink!" },
     { "word": "HEN", "level": "easy", "emoji": "🐔", "sound": "Cluck cluck!" },
     { "word": "BAT", "level": "easy", "image": "assets/img/bat.jpg", "emoji": "🏏", "say": "a cricket bat" },
     { "word": "FOX", "level": "easy", "emoji": "🦊" },
@@ -29,6 +30,7 @@ window.LE_CONTENT = {
     { "word": "SUN", "level": "easy", "emoji": "☀️" },
     { "word": "BUS", "level": "easy", "emoji": "🚌" },
     { "word": "CUP", "level": "easy", "emoji": "☕" },
+    { "word": "MUG", "level": "easy", "image": "assets/img/mug.jpg", "emoji": "☕" },
     { "word": "HAT", "level": "easy", "image": "assets/img/hat.jpg", "emoji": "👒" },
     { "word": "BAG", "level": "easy", "image": "assets/img/bag.jpg", "emoji": "🎒" },
     { "word": "PEN", "level": "easy", "emoji": "🖊️" },
@@ -67,13 +69,13 @@ window.LE_CONTENT = {
   ],
 
   "map": [
-    { "id": "LBY", "country": "Libya",   "level": "easy", "fact": "Libya is next to Egypt. It is mostly desert." },
-    { "id": "DZA", "country": "Algeria", "level": "easy", "fact": "Algeria is the biggest country in Africa." },
-    { "id": "EGY", "country": "Egypt",   "level": "easy", "fact": "Egypt has the river Nile and the pyramids." },
-    { "id": "SDN", "country": "Sudan",   "level": "easy", "fact": "The river Nile flows through Sudan." },
-    { "id": "TCD", "country": "Chad",    "level": "easy", "fact": "Chad has Lake Chad." },
-    { "id": "NER", "country": "Niger",   "level": "easy", "fact": "Niger is named after the river Niger." },
-    { "id": "TUN", "country": "Tunisia", "level": "hard", "fact": "Tunisia is small, and it is by the sea." }
+    { "id": "LBY", "country": "Libya",   "level": "easy", "monument": "Roman Arch", "monumentSay": "an old Roman arch", "fact": "Libya is next to Egypt. It is mostly desert." },
+    { "id": "DZA", "country": "Algeria", "level": "easy", "monument": "Martyrs' Monument", "monumentSay": "the Martyrs' Monument", "fact": "Algeria is the biggest country in Africa." },
+    { "id": "EGY", "country": "Egypt",   "level": "easy", "monument": "The Pyramids", "monumentSay": "the pyramids", "fact": "Egypt has the river Nile and the pyramids." },
+    { "id": "SDN", "country": "Sudan",   "level": "easy", "monument": "Meroë Pyramids", "monumentSay": "the pointy pyramids of Meroe", "fact": "The river Nile flows through Sudan." },
+    { "id": "TCD", "country": "Chad",    "level": "easy", "monument": "Grand Mosque", "monumentSay": "the big mosque of N'Djamena", "fact": "Chad has Lake Chad." },
+    { "id": "NER", "country": "Niger",   "level": "easy", "monument": "Agadez Mosque", "monumentSay": "the tall mud tower of Agadez", "fact": "Niger is named after the river Niger." },
+    { "id": "TUN", "country": "Tunisia", "level": "hard", "monument": "El Jem Arena", "monumentSay": "the big old arena of El Jem", "fact": "Tunisia is small, and it is by the sea." }
   ],
 
   "baby": [
