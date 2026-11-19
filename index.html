@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF3DC">
+  <title>Little Explorers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage" class="landscape">
+
+  <!-- Loading -->
+  <section class="screen active" id="scr-loading">
+    <div class="center-col">
+      <div class="logo">Little Explorers</div>
+      <div class="load-track"><div class="load-fill"></div><div class="load-owl">🦉</div></div>
+    </div>
+  </section>
+
+  <!-- Splash -->
+  <section class="screen" id="scr-splash" aria-label="Tap to play">
+    <div class="sky-deco" aria-hidden="true"><span>☁️</span><span>☁️</span><span>⭐</span><span>🌈</span></div>
+    <div class="center-col">
+      <div class="logo big">Little<br>Explorers</div>
+      <div class="ollie big" data-pose="wave"></div>
+      <div class="tap-play">▶ Tap to play</div>
+    </div>
+  </section>
+
+  <!-- Home -->
+  <section class="screen" id="scr-home">
+    <button class="profile-chip" id="btn-profile" aria-label="Who is playing?"><span class="avatar"></span><span class="pname"></span></button>
+    <div class="home-tr">
+      <button class="btn-round" id="btn-book" aria-label="Sticker book">📒</button>
+      <button class="btn-round lock" id="btn-lock" aria-label="Teacher settings: hold for 3 seconds">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"/></svg><span>🔒</span>
+      </button>
+    </div>
+    <div class="home-main">
+      <div class="logo">Little Explorers</div>
+      <button class="btn-play" id="btn-play" aria-label="Play">▶</button>
+      <div class="section-btns">
+        <button class="sec-btn spell" data-sec="spell" aria-label="Practise Spell It"><span class="letter-block">A</span></button>
+        <button class="sec-btn map" data-sec="map" aria-label="Practise Map Puzzle">🌍</button>
+        <button class="sec-btn baby" data-sec="baby" aria-label="Practise Find the Baby">🐾</button>
+      </div>
+    </div>
+    <div class="ollie home-ollie" data-pose="wave"></div>
+    <div class="overlay" id="profile-pick"><div class="card"><div class="pp-title">👋 Who is playing?</div><div class="profile-grid"></div></div></div>
+  </section>
+
+  <!-- Game -->
+  <section class="screen" id="scr-game">
+    <div id="play"></div>
+    <header class="hud">
+      <button class="btn-round" id="btn-home" aria-label="Home">🏠</button>
+      <div class="ollie hud-ollie"></div>
+      <div class="dots" id="dots"></div>
+      <button class="btn-round bulb" id="btn-hint" aria-label="Hint">💡</button>
+      <button class="btn-round" id="btn-speak" aria-label="Say it again">🔊</button>
+    </header>
+    <div class="overlay" id="intro"><div class="intro-card"><div class="intro-icon"></div><div class="intro-text"></div></div></div>
+    <div class="overlay" id="win">
+      <div class="win-card">
+        <div class="win-title"></div>
+        <div class="win-stars"></div>
+        <button class="btn-next" aria-label="Next">▶</button>
+      </div>
+    </div>
+    <div class="overlay" id="leave">
+      <div class="leave-card">
+        <div class="leave-q">🏠 Leave?</div>
+        <div class="leave-row">
+          <button class="btn-yes" aria-label="Yes, leave">✔</button>
+          <button class="btn-no" aria-label="No, keep playing">✖</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Session end -->
+  <section class="screen" id="scr-end">
+    <div class="end-main">
+      <div class="ollie big end-ollie" data-pose="dance"></div>
+      <div class="end-stars"><span class="big-star">⭐</span><span id="end-total">0</span><span id="end-max">/ 27</span></div>
+      <div id="end-pick-hint" class="end-pick">👇 🎁</div>
+      <div id="sticker-offers"></div>
+      <div class="end-btns">
+        <button class="btn-round xl" id="btn-again" aria-label="Play again">🔁</button>
+        <button class="btn-round xl" id="btn-end-home" aria-label="Home">🏠</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticker book -->
+  <section class="screen" id="scr-book">
+    <button class="btn-round book-home" id="btn-book-home" aria-label="Home">🏠</button>
+    <div class="book">
+      <div class="book-tabs">
+        <button class="book-tab" data-page="spell" aria-label="Alphabet animals"><span class="letter-block">A</span></button>
+        <button class="book-tab" data-page="map" aria-label="World flags">🌍</button>
+        <button class="book-tab" data-page="baby" aria-label="Animal families">🐾</button>
+        <span id="book-count"></span>
+      </div>
+      <div id="book-grid"></div>
+    </div>
+  </section>
+
+  <!-- Teacher mode -->
+  <section class="screen" id="scr-teacher">
+    <div id="teacher-panel"></div>
+  </section>
+
+  <div id="fx" aria-hidden="true"></div>
+  <div id="hand" aria-hidden="true">👆</div>
+</div>
+
+<script src="js/content.js"></script>
+<script src="js/core.js"></script>
+<script src="js/map.js"></script>
+<script src="js/spell.js"></script>
+<script src="js/baby.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
